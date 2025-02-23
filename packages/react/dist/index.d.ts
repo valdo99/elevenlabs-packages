@@ -1,7 +1,7 @@
-import { SessionConfig, Callbacks, ClientToolsConfig } from "@11labs/client";
-import { InputConfig } from "@11labs/client/dist/utils/input";
-export type { Role, Mode, Status, SessionConfig, DisconnectionDetails, } from "@11labs/client";
-export { postOverallFeedback } from "@11labs/client";
+import { SessionConfig, Callbacks, Status, ClientToolsConfig } from "elevenlabs-fork-valdo-client";
+import { InputConfig } from "elevenlabs-fork-valdo-client/dist/utils/input";
+export type { Role, Mode, Status, SessionConfig, DisconnectionDetails, } from "elevenlabs-fork-valdo-client";
+export { postOverallFeedback } from "elevenlabs-fork-valdo-client";
 export type HookOptions = Partial<SessionConfig & HookCallbacks & ClientToolsConfig & InputConfig>;
 export type HookCallbacks = Pick<Callbacks, "onConnect" | "onDisconnect" | "onError" | "onMessage" | "onDebug" | "onUnhandledClientToolCall">;
 export declare function useConversation<T extends HookOptions>(defaultOptions?: T): {
@@ -10,10 +10,10 @@ export declare function useConversation<T extends HookOptions>(defaultOptions?: 
     setVolume: ({ volume }: {
         volume: number;
     }) => void;
-    getInputByteFrequencyData: () => any;
-    getOutputByteFrequencyData: () => any;
-    getInputVolume: () => any;
-    getOutputVolume: () => any;
+    getInputByteFrequencyData: () => Uint8Array<ArrayBuffer> | undefined;
+    getOutputByteFrequencyData: () => Uint8Array<ArrayBuffer> | undefined;
+    getInputVolume: () => number;
+    getOutputVolume: () => number;
     sendFeedback: (like: boolean) => void;
     status: Status;
     canSendFeedback: boolean;

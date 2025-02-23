@@ -29,9 +29,6 @@
   "keywords": [],
   "author": "ElevenLabs",
   "license": "MIT",
-  "dependencies": {
-    "elevenlabs-fork-valdo-client": "https://gitpkg.vercel.app/valdo99/elevenlabs-packages/packages/client?main"
-  },
   "peerDependencies": {
     "react": ">=16.8.0"
   },
@@ -47,5 +44,8 @@
     "type": "git",
     "url": "git+https://github.com/elevenlabs/packages.git",
     "directory": "packages/react"
+  },
+  "dependencies": {
+    "elevenlabs-fork-valdo-client": "https://gitpkg.vercel.app/valdo99/elevenlabs-packages/packages/client?main"
   }
 }

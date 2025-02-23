@@ -7,16 +7,16 @@ import {
   Options,
   Status,
   ClientToolsConfig,
-} from "@11labs/client";
-import { InputConfig } from "@11labs/client/dist/utils/input";
+} from "elevenlabs-fork-valdo-client";
+import { InputConfig } from "elevenlabs-fork-valdo-client/dist/utils/input";
 export type {
   Role,
   Mode,
   Status,
   SessionConfig,
   DisconnectionDetails,
-} from "@11labs/client";
-export { postOverallFeedback } from "@11labs/client";
+} from "elevenlabs-fork-valdo-client";
+export { postOverallFeedback } from "elevenlabs-fork-valdo-client";
 
 export type HookOptions = Partial<
   SessionConfig & HookCallbacks & ClientToolsConfig & InputConfig
