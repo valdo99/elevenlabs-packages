@@ -209,7 +209,7 @@ export class Conversation {
 
       case "user_transcript": {
         if (parsedEvent.user_transcription_event.user_transcript === "...") {
-          this.fadeOutAudio();
+          this.interruptAudio();
         }
 
         this.options.onMessage({
@@ -364,6 +364,35 @@ export class Conversation {
     }, 2000); // Adjust the duration as needed
   };
 
+  private interruptAudio = async () => {
+    // mute agent
+    this.updateMode("listening");
+    this.output.worklet.port.postMessage({ type: "interrupt" });
+    this.output.gain.gain.exponentialRampToValueAtTime(
+      0.0001,
+      this.output.context.currentTime
+    );
+
+    try {
+      const response = await fetch("/audio/audio.mp3");
+      if (!response.ok) {
+        throw new Error(`Failed to load MP3: ${response.statusText}`);
+      }
+      const arrayBuffer = await response.arrayBuffer();
+      await this.sendMp3Audio(arrayBuffer);
+    } catch (error) {
+      console.error("Error sending MP3:", error);
+    }
+
+    // reset volume back
+    setTimeout(async () => {
+      this.output.gain.gain.value = this.volume;
+      this.output.worklet.port.postMessage({ type: "clearInterrupted" });
+
+      // Load and send the MP3 file
+    }, 2000); // Adjust the duration as needed
+  };
+
   private onError = (message: string, context?: any) => {
     console.error(message, context);
     this.options.onError(message, context);
@@ -435,6 +464,20 @@ export class Conversation {
     this.lastFeedbackEventId = this.currentEventId;
     this.updateCanSendFeedback();
   };
+
+  public async sendMp3Audio(audioData: ArrayBuffer) {
+    if (this.status !== "connected") {
+      throw new Error("Cannot send audio: websocket is not connected");
+    }
+
+    // Convert ArrayBuffer to base64 string for sending
+    const base64Audio = arrayBufferToBase64(audioData);
+
+    // Send as UserAudioEvent
+    this.connection.sendMessage({
+      user_audio_chunk: base64Audio,
+    });
+  }
 }
 
 export function postOverallFeedback(

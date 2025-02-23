@@ -59,6 +59,7 @@ export declare class Conversation {
     private onOutputWorkletMessage;
     private addAudioBase64Chunk;
     private fadeOutAudio;
+    private interruptAudio;
     private onError;
     private calculateVolume;
     getId: () => string;
@@ -71,5 +72,6 @@ export declare class Conversation {
     getInputVolume: () => number;
     getOutputVolume: () => number;
     sendFeedback: (like: boolean) => void;
+    sendMp3Audio(audioData: ArrayBuffer): Promise<void>;
 }
 export declare function postOverallFeedback(conversationId: string, like: boolean, origin?: string): Promise<Response>;
