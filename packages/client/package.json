@@ -1,6 +1,6 @@
 {
   "name": "elevenlabs-fork-valdo-client",
-  "version": "0.0.8",
+  "version": "0.0.7",
   "description": "ElevenLabs JavaScript Client Library",
   "main": "./dist/lib.umd.js",
   "module": "./dist/lib.module.js",
