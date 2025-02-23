@@ -1,5 +1,5 @@
 {
-  "name": "@11labs/react",
+  "name": "elevenlabs-fork-valdo-react",
   "version": "0.0.7",
   "description": "ElevenLabs React Library",
   "main": "./dist/lib.umd.js",
@@ -30,7 +30,7 @@
   "author": "ElevenLabs",
   "license": "MIT",
   "dependencies": {
-    "@11labs/client": "workspace:*"
+    "elevenlabs-fork-valdo-client": "https://gitpkg.vercel.app/valdo99/elevenlabs-packages/packages/client"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
