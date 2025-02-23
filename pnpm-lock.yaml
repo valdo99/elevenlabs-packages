@@ -57,9 +57,9 @@ importers:
 
   packages/react:
     dependencies:
-      '@11labs/client':
-        specifier: workspace:*
-        version: link:../client
+      elevenlabs-fork-valdo-client:
+        specifier: https://gitpkg.vercel.app/valdo99/elevenlabs-packages/packages/client?main
+        version: '@gitpkg.vercel.app/valdo99/elevenlabs-packages/packages/client?main'
       react:
         specifier: '>=16.8.0'
         version: 19.0.0
@@ -7229,3 +7229,9 @@ packages:
     resolution: {integrity: sha512-cYVsTjKl8b+FrnidjibDWskAv7UKOfcwaVZdp/it9n1s9fU3IkgDbhdIRKCW4JDsAlECJY0ytoVPT3sK6kideA==}
     engines: {node: '>=18'}
     dev: true
+
+  '@gitpkg.vercel.app/valdo99/elevenlabs-packages/packages/client?main':
+    resolution: {tarball: https://gitpkg.vercel.app/valdo99/elevenlabs-packages/packages/client?main}
+    name: elevenlabs-fork-valdo-client
+    version: 0.0.7
+    dev: false

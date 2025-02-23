@@ -30,7 +30,7 @@
   "author": "ElevenLabs",
   "license": "MIT",
   "dependencies": {
-    "elevenlabs-fork-valdo-client": "https://gitpkg.vercel.app/valdo99/elevenlabs-packages/packages/client"
+    "elevenlabs-fork-valdo-client": "https://gitpkg.vercel.app/valdo99/elevenlabs-packages/packages/client?main"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
